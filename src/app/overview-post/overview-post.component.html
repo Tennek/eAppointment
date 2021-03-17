@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let p of posts">
+        <a  style="cursor: pointer" [routerLink]="['/wizard', p.id]">{{p.name}}</a>
+    </li>
+</ul>

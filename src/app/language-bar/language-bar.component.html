@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let sl of supportedLanguages">
+        <a  style="cursor: pointer" [ngClass]="{'active' : sl === selectedLanguage}" (click)="onSelectLanguage(sl)">{{sl}}</a>
+    </li>
+</ul>
