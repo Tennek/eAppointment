@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../shared/post.model';
 import { map } from 'rxjs/operators';
+import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-wizard',
@@ -16,14 +17,23 @@ export class WizardComponent implements OnInit {
 
   selectedPost: Post | undefined = undefined;
   
-  readonly TOTAL_STEPS = 4;
+  total_steps = 0;
   currentStep = 0;
+
+  private readonly steps_flow = [
+    'who',
+    'what',
+    'when',
+    'overview',
+  ]
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<fromApp.AppState>
-  ) { }
+  ) { 
+    this.total_steps = this.steps_flow.length;
+  }
 
   ngOnInit(): void {
 
@@ -42,16 +52,24 @@ export class WizardComponent implements OnInit {
   }
 
   back() {
-    if(this.currentStep > 0)
+    if(this.currentStep > 0) {
       this.currentStep--;
+      this.navigateToStep();
+    }
   }
 
   next() {
-    if(this.currentStep < this.TOTAL_STEPS - 1)
+    if(this.currentStep < this.total_steps - 1) {
       this.currentStep++;
+      this.navigateToStep();
+    }
   }
 
-  finish() {
-    alert('finished !');
+  submit() {
+    alert('submitted !');
+  }
+
+  private navigateToStep() {
+    this.router.navigate([this.steps_flow[this.currentStep]], {relativeTo: this.route});
   }
 }

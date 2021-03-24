@@ -3,11 +3,11 @@
 <h3 *ngIf="selectedPost" >Make an appointment in {{ selectedPost?.name }}</h3>
 
 <div>
-    <span>step {{ currentStep + 1 }} of {{ TOTAL_STEPS }}</span>
+    <span>step {{ currentStep + 1 }} of {{ total_steps }}</span>
 </div>
 
-<!-- <router-outlet></router-outlet> -->
+<router-outlet></router-outlet>
 
 <button *ngIf="currentStep > 0" (click)="back()" >back</button>
-<button *ngIf="currentStep < TOTAL_STEPS - 1" (click)="next()">next</button>
-<button *ngIf="currentStep === TOTAL_STEPS - 1" (click)="finish()">finish</button>
+<button *ngIf="currentStep < total_steps - 1" (click)="next()">next</button>
+<button *ngIf="currentStep === total_steps - 1" (click)="submit()">submit</button>
