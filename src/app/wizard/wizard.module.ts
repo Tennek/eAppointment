@@ -6,10 +6,18 @@ import { OverviewPostEffects } from "../overview-post/store/overview-post.effect
 
 import { WizardRoutingModule } from "./wizard-routing.module";
 import { WizardComponent } from "./wizard.component";
+import { WizardWhoComponent } from './wizard-who/wizard-who.component';
+import { WizardWhatComponent } from './wizard-what/wizard-what.component';
+import { WizardWhenComponent } from './wizard-when/wizard-when.component';
+import { WizardOverviewComponent } from './wizard-overview/wizard-overview.component';
 
 @NgModule({
     declarations: [
-        WizardComponent
+        WizardComponent,
+        WizardWhoComponent,
+        WizardWhatComponent,
+        WizardWhenComponent,
+        WizardOverviewComponent
     ],
     imports: [
         CommonModule,
