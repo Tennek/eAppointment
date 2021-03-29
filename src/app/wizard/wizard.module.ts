@@ -10,6 +10,7 @@ import { WizardWhoComponent } from './wizard-who/wizard-who.component';
 import { WizardWhatComponent } from './wizard-what/wizard-what.component';
 import { WizardWhenComponent } from './wizard-when/wizard-when.component';
 import { WizardOverviewComponent } from './wizard-overview/wizard-overview.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { WizardOverviewComponent } from './wizard-overview/wizard-overview.compo
     ],
     imports: [
         CommonModule,
+        FormsModule,
         RouterModule,
         WizardRoutingModule,
         EffectsModule.forFeature([OverviewPostEffects])

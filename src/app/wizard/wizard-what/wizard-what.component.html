@@ -1,1 +1,14 @@
-<p>wizard-what works!</p>
+<p>what ?</p>
+
+<label for="what">What:</label>
+<input type="text" class="form-control" id="what"
+       required
+       [(ngModel)]="model.what" name="what" #whatInput="ngModel" >
+
+<div *ngIf="whatInput.invalid && (whatInput.dirty || whatInput.touched)"
+       class="alert alert-danger">
+
+       <div *ngIf="whatInput.errors!.required">
+              What is required.
+       </div>
+</div>

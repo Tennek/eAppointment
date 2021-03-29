@@ -6,8 +6,15 @@
     <span>step {{ currentStep + 1 }} of {{ total_steps }}</span>
 </div>
 
-<router-outlet></router-outlet>
+<app-wizard-who *ngIf="currentStep === 0" [model]="model.who" (isValid)='isValid(!!$event)'></app-wizard-who>
+<app-wizard-what *ngIf="currentStep === 1" [model]="model.what" (isValid)='isValid(!!$event)'></app-wizard-what>
+<app-wizard-when *ngIf="currentStep === 2" [model]="model.when" (isValid)='isValid(!!$event)'></app-wizard-when>
+<app-wizard-overview *ngIf="currentStep === 3" [model]="model"></app-wizard-overview>
+
+<br />
+<br />
+<br />
 
 <button *ngIf="currentStep > 0" (click)="back()" >back</button>
-<button *ngIf="currentStep < total_steps - 1" (click)="next()">next</button>
-<button *ngIf="currentStep === total_steps - 1" (click)="submit()">submit</button>
+<button *ngIf="currentStep < total_steps - 1" (click)="next()" [disabled]="!wizardIsValid">next</button>
+<button *ngIf="currentStep === total_steps - 1" (click)="submit()" [disabled]="!wizardIsValid">submit</button>

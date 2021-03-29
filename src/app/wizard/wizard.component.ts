@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../shared/post.model';
 import { map } from 'rxjs/operators';
 import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
+import { Wizard } from './model/wizard.model';
+import { WizardOverviewComponent } from './wizard-overview/wizard-overview.component';
+import { WizardWhat } from './model/wizard-what.model';
 
 @Component({
   selector: 'app-wizard',
@@ -19,6 +22,10 @@ export class WizardComponent implements OnInit {
   
   total_steps = 0;
   currentStep = 0;
+
+  model: Wizard;
+
+  wizardIsValid: boolean = false;
 
   private readonly steps_flow = [
     'who',
@@ -33,6 +40,10 @@ export class WizardComponent implements OnInit {
     private store: Store<fromApp.AppState>
   ) { 
     this.total_steps = this.steps_flow.length;
+    this.model = new Wizard();
+    this.model.who = { firstName: "", lastName: "" };
+    this.model.what = { what: "" };
+    this.model.when = { when: "" };
   }
 
   ngOnInit(): void {
@@ -51,25 +62,23 @@ export class WizardComponent implements OnInit {
     });
   }
 
+  isValid(value: boolean) {
+    this.wizardIsValid = value;
+  }
+
   back() {
     if(this.currentStep > 0) {
       this.currentStep--;
-      this.navigateToStep();
     }
   }
 
   next() {
     if(this.currentStep < this.total_steps - 1) {
       this.currentStep++;
-      this.navigateToStep();
     }
   }
 
   submit() {
     alert('submitted !');
-  }
-
-  private navigateToStep() {
-    this.router.navigate([this.steps_flow[this.currentStep]], {relativeTo: this.route});
   }
 }
