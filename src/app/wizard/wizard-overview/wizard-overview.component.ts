@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Wizard } from '../model/wizard.model';
 
 @Component({
   selector: 'app-wizard-overview',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wizard-overview.component.css']
 })
 export class WizardOverviewComponent implements OnInit {
+
+  @Input() model: Wizard | undefined;
 
   constructor() { }
 

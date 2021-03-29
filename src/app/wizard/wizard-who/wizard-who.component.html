@@ -1,1 +1,29 @@
-<p>wizard-who works!</p>
+<p>who ?</p>
+
+<label for="firstName">FirstName:</label>
+<input type="text" class="form-control" id="firstName"
+       required
+       [(ngModel)]="model.firstName" name="firstName" #firstNameInput="ngModel" >
+
+<div *ngIf="firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)"
+       class="alert alert-danger">
+
+       <div *ngIf="firstNameInput.errors!.required">
+              firstName is required.
+       </div>
+</div>
+
+<br />
+
+<label for="lastName">LastName:</label>
+<input type="text" class="form-control" id="lastName"
+       required
+       [(ngModel)]="model.lastName" name="lastName"  #lastNameInput="ngModel">
+
+<div *ngIf="lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)"
+       class="alert alert-danger">
+
+       <div *ngIf="lastNameInput.errors!.required">
+              lastName is required.
+       </div>
+</div>

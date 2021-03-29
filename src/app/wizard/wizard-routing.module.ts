@@ -14,30 +14,7 @@ const routes: Routes = [
     },
     {
         path: ':id',
-        component: WizardComponent,
-        children: [
-            {
-                path: '',
-                redirectTo: 'who',
-                pathMatch: 'full'
-            },
-            {
-              path: 'who',
-              component: WizardWhoComponent,
-            },
-            {
-              path: 'what',
-              component: WizardWhatComponent,
-            },
-            {
-              path: 'when',
-              component: WizardWhenComponent,
-            },
-            {
-              path: 'overview',
-              component: WizardOverviewComponent,
-            }
-          ]
+        component: WizardComponent
     }
 ]
 

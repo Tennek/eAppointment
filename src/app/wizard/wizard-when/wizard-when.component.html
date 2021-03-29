@@ -1,1 +1,14 @@
-<p>wizard-when works!</p>
+<p>when ?</p>
+
+<label for="when">When:</label>
+<input type="text" class="form-control" id="when"
+       required
+       [(ngModel)]="model.when" name="when" #whenInput="ngModel" >
+
+<div *ngIf="whenInput.invalid && (whenInput.dirty || whenInput.touched)"
+       class="alert alert-danger">
+
+       <div *ngIf="whenInput.errors!.required">
+              When is required.
+       </div>
+</div>
