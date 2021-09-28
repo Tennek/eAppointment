@@ -11,6 +11,7 @@ import { WizardWhatComponent } from './wizard-what/wizard-what.component';
 import { WizardWhenComponent } from './wizard-when/wizard-when.component';
 import { WizardOverviewComponent } from './wizard-overview/wizard-overview.component';
 import { FormsModule } from '@angular/forms';
+import { WizardStoreModule } from "./store/wizard-store.module";
 
 @NgModule({
     declarations: [
@@ -25,7 +26,6 @@ import { FormsModule } from '@angular/forms';
         FormsModule,
         RouterModule,
         WizardRoutingModule,
-        EffectsModule.forFeature([OverviewPostEffects])
     ]
 })
 export class WizardModule{}

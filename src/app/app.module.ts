@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OverviewPostComponent } from './overview-post/overview-post.component';
 import { LanguageBarComponent } from './language-bar/language-bar.component';
-import { StoreModule } from '@ngrx/store';
-import * as fromApp from './store/app.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { LanguageEffects } from './language-bar/store/language.effects';
 import { FooterComponent } from './footer/footer.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { OverviewPostEffects } from './overview-post/store/overview-post.effects';
-import { FormsModule } from '@angular/forms';
+
+import { RootStoreModule } from './store/root-store.module';
+import { WizardModule } from './wizard/wizard.module';
+import { WizardStoreModule } from './wizard/store/wizard-store.module';
 
 @NgModule({
   declarations: [
@@ -35,8 +33,8 @@ import { FormsModule } from '@angular/forms';
       }
     }),
     AppRoutingModule,
-    StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([LanguageEffects])
+    RootStoreModule,
+    WizardStoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

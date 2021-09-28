@@ -6,10 +6,10 @@
     <span>step {{ currentStep + 1 }} of {{ total_steps }}</span>
 </div>
 
-<app-wizard-who *ngIf="currentStep === 0" [model]="model.who" (isValid)='isValid(!!$event)'></app-wizard-who>
-<app-wizard-what *ngIf="currentStep === 1" [model]="model.what" (isValid)='isValid(!!$event)'></app-wizard-what>
-<app-wizard-when *ngIf="currentStep === 2" [model]="model.when" (isValid)='isValid(!!$event)'></app-wizard-when>
-<app-wizard-overview *ngIf="currentStep === 3" [model]="model"></app-wizard-overview>
+<app-wizard-who *ngIf="currentStep === 0" (isValid)='isValid(!!$event)'></app-wizard-who>
+<app-wizard-what *ngIf="currentStep === 1" (isValid)='isValid(!!$event)'></app-wizard-what>
+<app-wizard-when *ngIf="currentStep === 2" (isValid)='isValid(!!$event)'></app-wizard-when>
+<app-wizard-overview *ngIf="currentStep === 3"></app-wizard-overview>
 
 <br />
 <br />

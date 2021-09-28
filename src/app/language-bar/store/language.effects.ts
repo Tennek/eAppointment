@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { map, mergeMap, tap } from 'rxjs/operators';
 
 import * as LanguagesActions from './language.actions';
-import * as fromApp from '../../store/app.reducer';
 import { LanguageService } from 'src/app/services/language.service';
-import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'

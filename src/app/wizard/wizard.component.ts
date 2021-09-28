@@ -6,10 +6,8 @@ import { Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../shared/post.model';
 import { map } from 'rxjs/operators';
-import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
-import { Wizard } from './model/wizard.model';
-import { WizardOverviewComponent } from './wizard-overview/wizard-overview.component';
-import { WizardWhat } from './model/wizard-what.model';
+import { getLanguage, getOverviewposts } from '../store/root-store.selectors';
+import { setWizardWhat } from './store/wizard.actions';
 
 @Component({
   selector: 'app-wizard',
@@ -23,8 +21,6 @@ export class WizardComponent implements OnInit {
   total_steps = 0;
   currentStep = 0;
 
-  model: Wizard;
-
   wizardIsValid: boolean = false;
 
   private readonly steps_flow = [
@@ -36,14 +32,9 @@ export class WizardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private store: Store<fromApp.AppState>
   ) { 
     this.total_steps = this.steps_flow.length;
-    this.model = new Wizard();
-    this.model.who = { firstName: "", lastName: "" };
-    this.model.what = { what: "" };
-    this.model.when = { when: "" };
   }
 
   ngOnInit(): void {
@@ -53,7 +44,7 @@ export class WizardComponent implements OnInit {
       this.store.dispatch(fetchSelectedPost({payLoad: postId}));
     })
 
-    this.store.select('overviewposts')
+    this.store.select(getOverviewposts)
     .pipe(
       map(overviewPostState => overviewPostState.selectedPost)
     )
