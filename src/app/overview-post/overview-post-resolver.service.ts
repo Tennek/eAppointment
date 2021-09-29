@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { OfficeService } from '../services/office.service';
+import { PostService } from '../services/post.service';
 
 import { Post } from '../shared/post.model';
 
@@ -11,9 +11,9 @@ import { Post } from '../shared/post.model';
 export class OverviewPostResolverService implements Resolve<Post[]>{
 
   constructor(
-    private officeService: OfficeService
+    private postService: PostService
   ) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Post[] | Observable<Post[]> | Promise<Post[]> {
-    return this.officeService.getPosts();
+    return this.postService.getPosts();
   }
 }

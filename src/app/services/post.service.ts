@@ -4,22 +4,22 @@ import { Observable, of } from 'rxjs';
 import { Post } from '../shared/post.model';
 
 const dummyPosts : Post[] = [
-  new Post('1','Parijs')
-  , new Post('2','Abu Dhabi')
-  , new Post('3','Berlijn')
-  , new Post('4','Canberra')
-  , new Post('5','Kopenhagen')
-  , new Post('6','Geneve')
-  , new Post('7','Jeruzalem')
-  , new Post('8','Hongkong')
-  , new Post('9','Rijsel')
-  , new Post('10','Lissabon')
+  {id:'1',name:'Parijs'}
+  , {id:'2',name:'Abu Dhabi'}
+  , {id:'3',name:'Berlijn'}
+  , {id:'4',name:'Canberra'}
+  , {id:'5',name:'Kopenhagen'}
+  , {id:'6',name:'Geneve'}
+  , {id:'7',name:'Jeruzalem'}
+  , {id:'8',name:'Hongkong'}
+  , {id:'9',name:'Rijsel'}
+  , {id:'10',name:'Lissabon'}
 ]
 
 @Injectable({
   providedIn: 'root'
 })
-export class OfficeService {
+export class PostService {
 
   constructor() { }
 
